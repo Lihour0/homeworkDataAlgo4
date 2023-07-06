@@ -30,19 +30,20 @@ void deleteItem(int item){
     }
 }
 
-void updateItem(int item){
-    auto it = std::find(element.begin(), element.begin() + size, item);
+void updateItem(int oldItem,int item){
+    auto it = std::find(element.begin(), element.begin() + size, oldItem);
     if(it != element.begin() + size){
       *it = item;
     }
 }
 
-int* getSearch(int item){
+int getSearch(int item){
     auto it = std::find(element.begin(), element.begin() + size, item);
     if(it != element.begin() + size){
-      return &*it;
+        int a =  std::distance(element.begin(),it);
+        return a;
     }else {
-      return nullptr;
+      return -1;
     }
   }
 };
@@ -52,5 +53,12 @@ int main(){
   k.addItem(3);
   k.addItem(4);
   k.addItem(2);
-  std::cout<< k;
+  std::cout<< k <<"\n";
+  k.deleteItem(2);
+  std::cout<< k <<"\n";
+  k.updateItem(3,10);
+  std::cout<< k <<"\n";
+  k.getSearch(10);
+  std::cout<< k.getSearch(10);
+  std::cout<< k <<"\n";
 }
